@@ -1,0 +1,30 @@
+version: "3.1"
+services:
+
+    redis:
+        image: redis:alpine
+        container_name: app-redis
+
+    nginx:
+        image: nginx:alpine
+        container_name: app-nginx
+        working_dir: /app
+        volumes:
+            - ${APP_PATH}:/app:delegated
+            - ./nginx/${NGINX_APP_CONF}:/etc/nginx/conf.d/default.conf
+            - ./nginx/symfony:/etc/nginx/symfony
+        ports:
+            - "80:80"
+        links:
+            - php-fpm
+
+    php-fpm:
+        build: php-fpm/php-${PHP_VERSION}
+        container_name: app-php-fpm
+        working_dir: /app
+        volumes:
+            - ${APP_PATH}:/app:delegated
+            - ~/.composer:/root/.composer
+            - ./php-fpm/php-ini-overrides.ini:/etc/php/${PHP_VERSION}/fpm/conf.d/99-overrides.ini
+        links:
+            - redis

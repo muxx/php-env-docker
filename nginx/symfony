@@ -1,0 +1,24 @@
+rewrite ^/app\.php/?(.*)$ /$1 permanent;
+location / {
+    index app.php;
+    try_files $uri @rewriteapp;
+}
+
+location /index.php {
+    return 301 /;
+}
+
+location @rewriteapp {
+    rewrite ^(.*)$ /app.php/$1 last;
+}
+
+location ~ ^/.*\.php(/|$) {
+    fastcgi_pass php-fpm:9000;
+    fastcgi_split_path_info ^(.+\.php)(/.*)$;
+    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    include fastcgi_params;
+}
+
+location ~ /\.(ht|svn|git) {
+    deny  all;
+}
