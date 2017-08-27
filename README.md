@@ -4,8 +4,7 @@ PHP dev environment as Docker Compose configuration. Includes nginx, php-fpm, re
 
 ## Installation
 
-1. Copy `.env.dist` to `.env`
-2. Create nginx configuration for project. For instance `nginx/site.conf` with content:
+1. Create nginx configuration for a project. For instance `nginx/site.conf` with content:
 ```
 server {
     listen 80;
@@ -16,7 +15,8 @@ server {
     include symfony;
 }
 ```
-3. Run.
+2. Copy `.env.dist` to `.env` and define default values of parameters.
+3. Run!
 
 ## Examples of running
 
