@@ -29,5 +29,5 @@ docker-compose up
 PHP_VERSION=7.1 docker-compose up
 
 # run certain project
-NGINX_APP_CONF=site.conf APP_PATH=~/Sites/site docker-compose up 
+NGINX_APP_CONF=site.conf APP_PATH=~/Sites/site ENV_FILE=site.env docker-compose up 
 ```
