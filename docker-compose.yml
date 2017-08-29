@@ -28,3 +28,11 @@ services:
             - ./php-fpm/php-ini-overrides.ini:/etc/php/${PHP_VERSION}/fpm/conf.d/99-overrides.ini
         links:
             - redis
+            - mail
+
+    mail:
+        container_name: app-mail
+        image: mailhog/mailhog:latest
+        ports:
+            - "1025:1025"
+            - "8025:8025"
