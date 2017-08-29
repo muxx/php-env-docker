@@ -16,7 +16,8 @@ server {
 }
 ```
 2. Copy `.env.dist` to `.env` and define default values of parameters.
-3. Run!
+3. Create file with env variables in `env` folder if needed and define `ENV_FILE` var in `.env` file
+4. Run!
 
 ## Examples of running
 

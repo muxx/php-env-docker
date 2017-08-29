@@ -26,6 +26,8 @@ services:
             - ${APP_PATH}:/app:delegated
             - ~/.composer:/root/.composer
             - ./php-fpm/php-ini-overrides.ini:/etc/php/${PHP_VERSION}/fpm/conf.d/99-overrides.ini
+        env_file:
+            - env/${ENV_FILE}
         links:
             - redis
             - mail
