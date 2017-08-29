@@ -1,6 +1,6 @@
 # Docker for PHP dev environment
 
-PHP dev environment as Docker Compose configuration. Includes nginx, php-fpm, redis.
+PHP dev environment as Docker Compose configuration. Includes nginx, php-fpm, redis and mailhog.
 
 ## Installation
 
